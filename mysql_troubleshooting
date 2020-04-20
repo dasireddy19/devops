@@ -1,0 +1,23 @@
+common Troubleshooting for MYSQL DB for system Admin
+--------------------------------------------------------
+Not able to start the Database:
+Things to check
+-----------------
+1) Mysql configuration file /etc/my.cnf is present and have valid configuration
+2) system has enough free resources to cater mysql.
+3)filesystems are not in read only mode
+4) check and fix the errors report in /var/log/mysqld.log
+
+Mysql service is running, but still iam not able to connect remotely
+---------------------------------------------------------------------
+Things to check
+----------------
+1) verify you are connectivity to correct port of the database.
+2) verify firewall burns are down for mysql connectivity.
+3) verify you are using correct user/password.
+
+users are not able to create new connections after a certin limit
+-------------------------------------------------------------------
+things to check
+-----------------
+verify you are not hitting "max_connections" limits.if yes,you might need to increase it.
