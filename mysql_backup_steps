@@ -1,0 +1,20 @@
+Back Up and Restore a Mysql Database
+----------------------------------------
+ on a mysql database server where databases stores important or crucial information, we might need to take regular backups of database, so they database can be restore in case of disaster or for recovery purpose.
+
+ Backup:MySql database backup we will use mysql utilities mysqldump.
+
+ Restore:we will use mysql command.
+
+ The mysqldump utility has advantages and disadvantages.The advantages of using mysqldump are that it is simple to use and it takes care of table locking issues for you.the disadvantage is mysqldump locks tables.if the size of your tables is very big mysqldump can lock out users for a long period of time.
+
+ Take Database Backup:
+ -------------------------
+ mysqldump -u root -p mylabdb > /db_back/mylab_backup.sql
+ mysqldump -u root -p --all-databases > /db_back/alldb_backup.sql
+ Note: always keep your db dump file encrypted
+ openssl enc -aes-256-cbc -in /db_back/alldb_backup.sql -out /db_back/dummy.file
+ Optional step: if your database dump file is encrypted
+ openssl enc -aes-256-cbc -d -in /db_back/dummy.file > /db_back/mylabdb_backup.sql
+ Restore the database (first create the empty db)
+ mysql -u root -p mylabdb < /db_back/mylabdb_backup.sql

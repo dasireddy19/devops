@@ -1,0 +1,42 @@
+# In centos7, MYSQL is not part of default repositories.MariaDB is now DB with centos repositories.if you prefer MYSQL, then you have to install it from mysql repositories.
+# Import and configure mysql repositories
+wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+rpm -ivh mysql-community-release-el7-5.noarch.rpm
+
+# Install MYSQL community version and start the MYSQl services
+yum install mysql-server
+systemctl enable mysqld.service
+systemctl start mysqld.service
+systemctl status mysqld.service
+# Perform the basic MYSQL Hardening
+mysql_secure_installation
+# To know mysql process running or not
+ ps -eaf | grep -i mysql
+# Basic MYSQL commands
+#Login to mysql
+mysql -u root -p
+# Checking basic session info of mysql server
+status
+# List and existing databases and create a new database
+show databases;
+# below command will create a new database name mylabdb
+create database mylabdb;
+# List,create database users and setting the previlises
+select user from mysql.user;
+create user 'labuser'@'localhost' identified by 'user123';
+grant all on mylabdb.* to 'labuser' identified by 'user123';
+flush privileges;
+use mylabdb;
+create table employee (empname char(20),deptt char(20),title char(20));
+describe employee;
+show tables;
+ insert into employee (empname,deptt,title) VALUES("dasireddy","cse","Engineer";select * from mylabdb.employee;
+use mylabdb;
+show tables;
+drop table employee;
+drop database mylabdb;
+drop user labuser;
+show processlist;
+
+
+
