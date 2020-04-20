@@ -21,3 +21,5 @@ users are not able to create new connections after a certin limit
 things to check
 -----------------
 verify you are not hitting "max_connections" limits.if yes,you might need to increase it.
+
+show variables like "port";
